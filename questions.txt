@@ -2,49 +2,58 @@ Vilket av följande år vann Albert Einstein Nobelpriset i fysik?
 1919
 1921
 1925
+1
 
 Vad kallas den längsta floden i världen?
 Amazonfloden
 Nilen
 Mississippifloden
+1
 
 Vilket av följande land är inte en medlem av G7?
 Japan
 Indien
 Kanada
+X
 
 Vilket av följande författare skrev inte en bok som vunnit Nobelpriset i litteratur?
 Ernest Hemingway
 Gabriel García Márquez
 Leo Tolstoj
+2
 
 Vilket år började den amerikanska inbördeskriget?
 1861
 1876
 1899
+1
 
 Vad är världens näst högsta berg?
 Mount Everest
 K2
 Kangchenjunga
+X
 
-
-Vilket element har kemiskt tecken "Fe"?
-Kisel
-Järn
-Kol
+Vilket element har kemiskt tecken "Co"?
+Koppar
+Copernicium
+Kobolt
+2
 
 Vilket år avslutades första världskriget?
 1918
 1921
 1916
+1
 
 Vilket land har flest antal tidzoner?
 Ryssland
 Kina
 USA
+1
 
 Vilket årtionde introducerades den första persondatorn?
-1970-talet
 1980-talet
+1970-talet
 1990-talet
+X
