@@ -1,8 +1,8 @@
-from readList import read_list
-def log_answers(question_number: int, is_answer_correct: bool) -> None:
+from readAndResetList import read_list
+def log_answers(filename: str, question_number: int, is_answer_correct: bool) -> None:
   AMOUNT_OF_QUESTIONS = 10
   
-  answer_list = read_list("answers.txt")
+  answer_list = read_list(filename)
   
   if is_answer_correct:
     correct_answers = answer_list[question_number][1].split(" ")
@@ -29,7 +29,5 @@ def log_answers(question_number: int, is_answer_correct: bool) -> None:
   
   print(new_answers)
   
-  with open("answers.txt", "w", encoding="utf-8") as answers:
+  with open(filename, "w", encoding="utf-8") as answers:
     answers.write(new_answers)
-
-log_answers(0, True)

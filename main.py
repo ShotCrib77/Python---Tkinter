@@ -1,14 +1,9 @@
-from logingFunction import log_answers
 import tkinter as tk
-from readList import read_list
-import time
+from logingFunction import log_answers
+from readAndResetList import read_list, reset_personal_answers
+from showStats import show_stats, show_stats_file
 
 AMOUNT_OF_QUESTIONS = 10
-
-def set_user_input(alternative_input: str):
-    global user_input
-    user_input = alternative_input
-    print(user_input) # Debugging
 
 def clear_screen():
     for widget in root.winfo_children():
@@ -16,22 +11,38 @@ def clear_screen():
 
 def on_closing():
     root.destroy()
+
+buttons = []
+def on_button_click(button):
+    button.config(state=tk.DISABLED)
+    button.config(bg="#77DD77")
+    for other_button in buttons:
+        if other_button != button:
+            other_button.config(state=tk.NORMAL)
+            other_button.config(bg="#FFFFFF")
+
+def set_user_input(alternative_input: str):
+    global user_input
+    user_input = alternative_input
+    print(user_input) # Debugging
     
 def check_answer():
     global user_input, correct_answer, question_number
     if user_input is not None:
         if user_input == correct_answer:
-            log_answers(question_number, True)
+            log_answers("answers.txt", question_number, True)
+            log_answers("personalAnswers.txt", question_number, True)
         else:
-            log_answers(question_number, False)
+            log_answers("answers.txt", question_number, False)
+            log_answers("personalAnswers.txt", question_number, False)
             
         question_number += 1
+        clear_screen()
         if question_number != AMOUNT_OF_QUESTIONS:
-            clear_screen()
             ask_question(question_number)
         else:
-            pass
-            #show stats 
+            show_stats(root)
+            reset_personal_answers()
         
 def ask_question(i):
     print(i)
@@ -70,25 +81,29 @@ def ask_question(i):
     alternative_2_lable = tk.Label(top, text = alternative_2_lable, font=("Arial", 10))
     alternative_2_lable.pack(side="top", pady=5)
         
-    button_1 = tk.Button(button_container, text="1", command=lambda: set_user_input("1"))
+    button_1 = tk.Button(button_container, text="1", command=lambda: (set_user_input("1"), on_button_click(button_1)))
     button_1.pack(side='left', padx=5)
 
-    button_x = tk.Button(button_container, text="X", command=lambda: set_user_input("X"))
+    button_x = tk.Button(button_container, text="X", command=lambda: (set_user_input("X"), on_button_click(button_x)))
     button_x.pack(side='left', padx=5)
 
-    button_2 = tk.Button(button_container, text="2", command=lambda: set_user_input("2"))
+    button_2 = tk.Button(button_container, text="2", command=lambda: (set_user_input("2"), on_button_click(button_2)))
     button_2.pack(side='left', padx=5)
     
-    next_question_button = tk.Button(root, text="Next Question", command=check_answer)
+    next_question_button = tk.Button(root, text="Nästa fråga!", command= check_answer)
     next_question_button.pack(pady=10)
     
     root.update()
 
+    buttons.append(button_1)
+    buttons.append(button_x)
+    buttons.append(button_2)
 
 root = tk.Tk()
 root.title("Tipspromenad")
-root.geometry("550x400") 
+root.geometry("900x650")
 root.protocol("WM_DELETE_WINDOW", on_closing)
+
 
 question_list = read_list("questions.txt")
 
