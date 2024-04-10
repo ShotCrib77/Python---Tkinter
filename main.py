@@ -11,11 +11,12 @@ def clear_screen():
 
 def on_closing():
     root.destroy()
+    reset_personal_answers()
 
 buttons = []
 def on_button_click(button):
     button.config(state=tk.DISABLED)
-    button.config(bg="#77DD77")
+    button.config(bg="#67B7D1")
     for other_button in buttons:
         if other_button != button:
             other_button.config(state=tk.NORMAL)
@@ -27,7 +28,7 @@ def set_user_input(alternative_input: str):
     print(user_input) # Debugging
     
 def check_answer():
-    global user_input, correct_answer, question_number
+    global user_input, correct_answer, question_number, buttons
     if user_input is not None:
         if user_input == correct_answer:
             log_answers("answers.txt", question_number, True)
@@ -38,6 +39,9 @@ def check_answer():
             
         question_number += 1
         clear_screen()
+        user_input = None
+         
+        buttons = []
         if question_number != AMOUNT_OF_QUESTIONS:
             ask_question(question_number)
         else:
@@ -45,7 +49,6 @@ def check_answer():
             reset_personal_answers()
         
 def ask_question(i):
-    print(i)
     top = tk.Frame(root)
     top.pack(expand=True, fill="both")
     alternatives = tk.Frame(root)
@@ -73,35 +76,36 @@ def ask_question(i):
     question_lable.pack()
     
     alternative_1_lable = tk.Label(top, text = alternative_1_lable, font=("Arial", 10))
-    alternative_1_lable.pack(side="top", pady=5)
-    
     alternative_x_lable = tk.Label(top, text = alternative_x_lable, font=("Arial", 10))
-    alternative_x_lable.pack(side="top", pady=5)
-    
     alternative_2_lable = tk.Label(top, text = alternative_2_lable, font=("Arial", 10))
+    
+    alternative_1_lable.pack(side="top", pady=5)
+    alternative_x_lable.pack(side="top", pady=5)
     alternative_2_lable.pack(side="top", pady=5)
         
-    button_1 = tk.Button(button_container, text="1", command=lambda: (set_user_input("1"), on_button_click(button_1)))
+    button_1 = tk.Button(button_container, text="1", bg = "#FFFFFF")
+    button_x = tk.Button(button_container, text="X", bg = "#FFFFFF")
+    button_2 = tk.Button(button_container, text="2", bg = "#FFFFFF")
+    
+    button_1.configure(command=lambda button=button_1: (set_user_input("1"), on_button_click(button)))
+    button_x.configure(command=lambda button=button_x: (set_user_input("X"), on_button_click(button)))
+    button_2.configure(command=lambda button=button_2: (set_user_input("2"), on_button_click(button)))
+    
     button_1.pack(side='left', padx=5)
-
-    button_x = tk.Button(button_container, text="X", command=lambda: (set_user_input("X"), on_button_click(button_x)))
     button_x.pack(side='left', padx=5)
-
-    button_2 = tk.Button(button_container, text="2", command=lambda: (set_user_input("2"), on_button_click(button_2)))
     button_2.pack(side='left', padx=5)
+   
+    buttons.extend([button_1, button_x, button_2])
     
     next_question_button = tk.Button(root, text="Nästa fråga!", command= check_answer)
     next_question_button.pack(pady=10)
     
     root.update()
 
-    buttons.append(button_1)
-    buttons.append(button_x)
-    buttons.append(button_2)
 
 root = tk.Tk()
 root.title("Tipspromenad")
-root.geometry("900x650")
+root.geometry("900x700")
 root.protocol("WM_DELETE_WINDOW", on_closing)
 
 

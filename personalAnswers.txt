@@ -1,39 +1,39 @@
 Question 1:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 2:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 3:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 4:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 5:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 6:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 7:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 8:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 9:
-Correct: 0
+Correct: 1
 Incorrect: 0
 
 Question 10:
-Correct: 0
+Correct: 1
 Incorrect: 0

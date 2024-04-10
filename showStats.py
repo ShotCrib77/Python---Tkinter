@@ -2,7 +2,7 @@ import tkinter as tk
 from readAndResetList import read_list
 
 AMOUNT_OF_QUESTIONS = 10
-def show_stats_file(window: object, filename: str, left_or_right: str) -> None:
+def show_stats_file(window: object, filename: str, left_or_right: str) -> None: # Visar stats från 1 fil
 
   show_stats_frame = tk.Frame(window)
   show_stats_frame.pack(padx = 50, side=left_or_right)
@@ -26,7 +26,7 @@ def show_stats_file(window: object, filename: str, left_or_right: str) -> None:
     
     if (i + 1) % 3 == 0:
       row_index += 1
-def show_stats(window: object) -> None:
+def show_stats(window: object) -> None: # Visar stats från båda filerna
   
   top = tk.Frame(window)
   top.pack(pady=20)
